@@ -334,7 +334,8 @@ jQuery.extend({
 
 		responseFields: {
 			xml: "responseXML",
-			text: "responseText"
+			text: "responseText",
+			binary: "response"
 		},
 
 		// List of data converters

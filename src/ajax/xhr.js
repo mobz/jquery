@@ -139,18 +139,23 @@ if ( jQuery.support.ajax ) {
 									status = xhr.status;
 									responseHeaders = xhr.getAllResponseHeaders();
 									responses = {};
-									xml = xhr.responseXML;
+									
+									if( "response" in xhr ) {
+										responses.binary = xhr.response;
+									} else {
+										xml = xhr.responseXML;
 
-									// Construct response list
-									if ( xml && xml.documentElement /* #4958 */ ) {
-										responses.xml = xml;
-									}
+										// Construct response list
+										if ( xml && xml.documentElement /* #4958 */ ) {
+											responses.xml = xml;
+										}
 
-									// When requesting binary data, IE6-9 will throw an exception
-									// on any attempt to access responseText (#11426)
-									try {
-										responses.text = xhr.responseText;
-									} catch( _ ) {
+										// When requesting binary data, IE6-9 will throw an exception
+										// on any attempt to access responseText (#11426)
+										try {
+											responses.text = xhr.responseText;
+										} catch( _ ) {
+										}
 									}
 
 									// Firefox throws an exception when accessing
