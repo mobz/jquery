@@ -1,6 +1,36 @@
 [jQuery](http://jquery.com/) - New Wave JavaScript
 ==================================================
 
+Binary Ajax Support
+-------------------
+
+This fork of jquery supports binary responses in xhr (in browsers that support requestType) using the following syntax
+
+```
+$.ajax({
+  xhrFields: {
+    responseType: _responseType_
+  },
+  dataType: "binary",
+  success: function( _data_, textStatus, jqXHR )
+  ...
+}
+```
+
+Where _responseType_ is one of
+
+1. `"arraybuffer"` -> _data_ is an ArrayBuffer
+2. `"blob"` -> _data_ is a Blob
+3. `"document"` -> _data_ is a Document
+4. `"json"` -> _data_ is an Object
+
+see also
+
+* [W3 Spec: XMLHttpRequest Level 2](http://www.w3.org/TR/XMLHttpRequest/#the-response-attribute)
+* [Mozilla Documentation](https://developer.mozilla.org/en/xmlhttprequest)
+* [Can I Use: XHR2](http://caniuse.com/xhr2)
+
+
 Contribution Guides
 --------------------------------------
 
